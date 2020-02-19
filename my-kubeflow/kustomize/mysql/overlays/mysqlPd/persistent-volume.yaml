@@ -3,11 +3,10 @@ kind: PersistentVolume
 metadata:
   name: $(mysqlPvName)
 spec:
-  storageClassName: my-nfs-storage
   capacity:
     storage: 20Gi
   accessModes:
   - ReadWriteOnce
-  nfs:
-    server: 172.23.128.40
-    path: /var/nfs/kf
+  gcePersistentDisk:
+    pdName: $(mysqlPd)
+    fsType: ext4
